@@ -17,9 +17,16 @@
 
 O objetivo deste exercício de programação é implementar, na linguagem de programação Go, um programa chamado `sudoku-checker` que **verifica** a satisfação das regras do jogo *Sudoku*. O *Sudoku* consiste no posicionamento lógico de números entre 1 e 9 em cada uma das células vazias em uma grade de tamanho 9 x 9 constituída de nove subgrades (regiões) de tamanho 3 x 3. O quebra-cabeça contém algumas pistas iniciais, que são números inseridos em algumas células, de maneira a permitir uma indução ou dedução dos números em células que estejam vazias.
 
+<p align="center">
+   <img width="40%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png" alt="A typical Sudoku puzzle, with nine rows and nine columns that intersect at square spaces. Some of the cells are filled with a number; others are blank cells to be solved." />
+   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg.png" alt="Sudoku Puzzle by L2G-20050714 solution standardized layout.svg"/>
+   <br/>
+ <span><em>Exemplo de grade do Sudoku (esquerda) e respectiva solução (direita). Fonte: Wikipedia.</em></span>
+</p>
+
 O preenchimento das células no *Sudoku* deve obedecer a algumas regras. Em essência, o número a ser inserido não deve ter sido previamente colocado na linha, coluna ou região desejada. Ou seja, cada coluna, linha e região só pode ter um número de 1 a 9. Além disso, os números com os quais a grade do *Sudoku* é inicialmente preenchida não são passíveis de modificação, isto é, eles são fixos em suas posições e não podem ser sobrescritos. Com isso, a inserção de números nas células deve ocorrer unicamente sobre células vazias.
 
-**Observação:** Este exercício de programação possui foco unicamente na verificação das restrições do *Sudoku*. **Não** é necessário implementar um solucionador (*solver*) automático para o jogo.
+**Observação:** Este exercício de programação possui foco unicamente na verificação das restrições do *Sudoku*. **Não é necessário implementar um solucionador (*solver*) automático para o jogo.**
 
 ## Tarefas
 
@@ -50,10 +57,13 @@ type Grid [rows][columns]int8
 ```
 
 No momento da leitura do arquivo, deve-se fazer uma verificação adicional, por meio de outra função, se o conteúdo constitui uma grade válida para o *Sudoku*, isto é, (i) tem-se um conjunto de números dispostos na forma de uma matriz de tamanho 9 x 9 e (ii) se todos os dígitos estão entre 0 e 9. O arquivo representando a grade inicial do *Sudoku* pode ser elaborado a partir de exemplos disponíveis na Internet, como no site [Sudoku.com](https://sudoku.com/). Uma vez carregada a grade inicial, esta deverá ser exibida na saída padrão.
+
 2. Implementar uma função que realiza a tentativa de inserção de um dígito na grade do *Sudoku*. O usuário deve fornecer, via entrada padrão, as coordenadas da célula onde se deseja realizar a inserção e o dígito a ser inserido. Neste procedimento, deverão ser realizadas as seguintes verificações:
-    - Se as coordenadas da célula informadas pelo usuário são válidas
-    - Se a célula cujas coordenadas foram informadas pelo usuário já está preenchida (apenas células que contenham 0 podem ter novos dígitos inseridos)
-    - Se o dígito a ser inserido é válido
+
+- Se as coordenadas da célula informadas pelo usuário são válidas
+- Se a célula cujas coordenadas foram informadas pelo usuário já está preenchida (apenas células que contenham 0 podem ter novos dígitos inseridos)
+- Se o dígito a ser inserido é válido
+
 Caso a inserção seja feita de forma bem sucedida, deve-se apresentar na saída padrão a grade do *Sudoku* com o dígito inserido na célula indicada pelo usuário.
 
 Para cada tipo de violação de restrição do *Sudoku*, devem ser criados erros distintos, cada um deles com tratamento adequado. Além disso, por questões de modularidade, as verificações deverão ser feitas por funções individuais. Em caso de violação de alguma restrição, o programa deverá exibir uma mensagem de erro correspondente à violação na saída e solicitar ao usuário novas entradas.
